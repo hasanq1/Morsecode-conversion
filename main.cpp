@@ -16,14 +16,13 @@
 #include <map>
 
 using namespace std;
-using std::map;
 void dictionary(string Cypher);
 void makeKeys(char Message);
 void encrypt();
 void decrypt();
 int main(int argc, const char * argv[]){
     int choice;
-    cout<<"What would you like to do? choose (1 to encrypt a message) || (2 to decrypt a message)|| (0 to exit the program)."<<endl;
+    cout<<"What would you like to do? choose (1 to encrypt a message) || (2 to decrypt a message) || (0 to exit the program)."<<endl;
     cin>>choice;
     
     while(choice!=0){
@@ -38,13 +37,9 @@ int main(int argc, const char * argv[]){
             cout<<"invalid choice recompile"<<endl;
             cout<<"Choose 1 or 2 "<<endl;
     }
-        cin>>choice;
     }
     return 0;
 }
-
-
-
 void decrypt(){
     string toDecrypt,placeHolder;
     cout<<"Enter the message you would like to decrypt "<<endl;
@@ -68,12 +63,6 @@ void decrypt(){
        // }
    // dictionary(placeHolder);
 }
-
-
-
-
-
-
 void encrypt(){
     string toEncrypt;
     cout<<"Enter the message you yould like to encrypt: "<<endl;
@@ -86,8 +75,6 @@ void encrypt(){
         cout<<endl;
     }
 }
-
-
 
 void makeKeys(char Message){
     if(Message=='A'){
@@ -129,7 +116,7 @@ void makeKeys(char Message){
     if(Message=='S'){
       cout<< "...";}
     if(Message=='T'){
-      cout<< "- ";}
+      cout<< "-";}
     if(Message=='U'){
       cout<< "..-";}
     if(Message=='V'){
