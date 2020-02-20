@@ -29,13 +29,18 @@ int main(int argc, const char * argv[]){
     switch (choice) {
         case 1:
             encrypt();
+            cout<<"Encryption mode ended."<<endl;
+            cout<<"Choose (1 to encrypt a message) || (2 to decrypt a message) || (0 to exit the program)."<<endl;
+            cin>>choice;
             break;
         case 2:
             decrypt();
+            cout<<"Decryption mode ended."<<endl;
+            cout<<"Choose (1 to encrypt a message) || (2 to decrypt a message) || (0 to exit the program)."<<endl;
+            cin>>choice;
             break;
         default:
-            cout<<"invalid choice recompile"<<endl;
-            cout<<"Choose 1 or 2 "<<endl;
+            cout<<"What would you like to do? choose (1 to encrypt a message) || (2 to decrypt a message) || (0 to exit the program)."<<endl;
     }
     }
     return 0;
@@ -50,7 +55,7 @@ void decrypt(){
     while(toDecrypt!="end"){
         cin>>toDecrypt;
         if(toDecrypt=="end"){
-            exit(0);
+            break;
         }
         else{
         dictionary(toDecrypt);
@@ -66,13 +71,20 @@ void decrypt(){
 void encrypt(){
     string toEncrypt;
     cout<<"Enter the message you yould like to encrypt: "<<endl;
-    cin>>toEncrypt;
-    //getline(cin,toEncrypt,'\n');// to test on the terminal
-    cout<<"Your message encrypted is: "<<endl;;
-
-    for(int i=0;i<=toEncrypt.length();i++){
+    cout<<"Type 0 to exit"<<endl;
+    while(cin>>toEncrypt){
+        
+        if (toEncrypt == "0"){
+            cout<<"Encryption exited."<<endl;
+            break;
+        }
+       // else{
+        cout<<"Your message encrypted is: "<<endl;
+        for(int i=0;i<toEncrypt.length();i++){
         makeKeys(toEncrypt[i]);
         cout<<endl;
+        }
+        
     }
 }
 
@@ -119,7 +131,7 @@ void makeKeys(char Message){
       cout<< "-";}
     if(Message=='U'){
       cout<< "..-";}
-    if(Message=='V'){
+    if(Message=='V'|| Message=='v'){
       cout<< "...-";}
     if(Message=='W'){
       cout<< ".--";}
@@ -129,7 +141,7 @@ void makeKeys(char Message){
       cout<< "-.--";}
     if(Message=='Z'){
       cout<< "--..";}
-    if(Message==' '){
+    if(Message=='\0'){
         cout<<" ";
     }
     /*
@@ -241,4 +253,6 @@ void dictionary(string Cypher){
         cout<<"Y";}
     if(Cypher=="--.."){
         cout<<"Z";}
+    if (Cypher==" "){
+        cout<<" ";}
 }
