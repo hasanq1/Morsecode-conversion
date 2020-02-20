@@ -12,19 +12,18 @@
 #include <array>
 #include <sstream>
 #include <string>
-#include <iterator>
-#include <map>
+#include <unistd.h>
 
 using namespace std;
 void dictionary(string Cypher);
 void makeKeys(char Message);
 void encrypt();
 void decrypt();
-int main(int argc, const char * argv[]){
+void menu();
+void menu(){
     int choice;
     cout<<"What would you like to do? choose (1 to encrypt a message) || (2 to decrypt a message) || (0 to exit the program)."<<endl;
     cin>>choice;
-    
     while(choice!=0){
     switch (choice) {
         case 1:
@@ -43,7 +42,6 @@ int main(int argc, const char * argv[]){
             cout<<"What would you like to do? choose (1 to encrypt a message) || (2 to decrypt a message) || (0 to exit the program)."<<endl;
     }
     }
-    return 0;
 }
 void decrypt(){
     string toDecrypt,placeHolder;
@@ -73,7 +71,6 @@ void encrypt(){
     cout<<"Enter the message you yould like to encrypt: "<<endl;
     cout<<"Type 0 to exit"<<endl;
     while(cin>>toEncrypt){
-        
         if (toEncrypt == "0"){
             cout<<"Encryption exited."<<endl;
             break;
@@ -84,123 +81,68 @@ void encrypt(){
         makeKeys(toEncrypt[i]);
         cout<<endl;
         }
-        
+        cout<<"Continue encryption, enter another message else type 0 to exit: "<<endl;
     }
 }
 
 void makeKeys(char Message){
-    if(Message=='A'){
-      cout<< ".-";}
-    if(Message=='B'){
-      cout<< "-...";}
-    if(Message=='C'){
-      cout<< "-.-.";}
-    if(Message=='D'){
-      cout<< "-..";}
-    if(Message=='E'){
-      cout<< ".";}
-    if(Message=='F'){
-      cout<< "..-.";}
-    if(Message=='G'){
-      cout<< "--.";}
-    if(Message=='H'){
-      cout<< "....";}
-    if(Message=='I'){
-      cout<< "..";}
-    if(Message=='J'){
-      cout<< ".---";}
-    if(Message=='K'){
-      cout<< "-.-";}
-    if(Message=='L'){
-      cout<< ".-..";}
-    if(Message=='M'){
-      cout<< "--";}
-    if(Message=='N'){
-      cout<< "-.";}
-    if(Message=='O'){
-      cout<< "---";}
-    if(Message=='P'){
-      cout<< ".--.";}
-    if(Message=='Q'){
-      cout<< "--.-";}
-    if(Message=='R'){
-      cout<< ".-.";}
-    if(Message=='S'){
-      cout<< "...";}
-    if(Message=='T'){
-      cout<< "-";}
-    if(Message=='U'){
-      cout<< "..-";}
-    if(Message=='V'|| Message=='v'){
-      cout<< "...-";}
-    if(Message=='W'){
-      cout<< ".--";}
-    if(Message=='X'){
-      cout<< "-..-";}
-    if(Message=='Y'){
-      cout<< "-.--";}
-    if(Message=='Z'){
-      cout<< "--..";}
-    if(Message=='\0'){
-        cout<<" ";
-    }
-    /*
-    if(Message=='a'){
-      cout<< ".-";}
-    if(Message=='b'){
-      cout<< "-...";}
-    if(Message== 'c'){
-      cout<< "-.-.";}
-    if(Message== 'd'){
-      cout<< "-..";}
-    if(Message== 'e'){
-      cout<< ".";}
-    if(Message== 'f'){
-      cout<< "..-.";}
-    if(Message== 'g'){
-      cout<< "--.";}
-    if(Message== 'h'){
-      cout<< "....";}
-    if(Message== 'i'){
-      cout<< "..";}
-    if(Message== 'j'){
-      cout<< ".---";}
-    if(Message== 'k'){
-      cout<< "-.-";}
-    if(Message== 'l'){
-      cout<< ".-..";}
-    if(Message== 'm'){
-      cout<< "--";}
-    if(Message== 'n'){
-      cout<< "-.";}
-    if(Message== 'o'){
-      cout<< "---";}
-    if(Message== 'p'){
-      cout<< ".--.";}
-    if(Message== 'q'){
-      cout<< "--.-";}
-    if(Message== 'r'){
-      cout<< ".-.";}
-    if(Message== 's'){
-      cout<< "...";}
-    if(Message== 't'){
-      cout<< "-";}
-    if(Message== 'u'){
-      cout<< "..-";}
-    if(Message== 'v'){
-      cout<< "...-";}
-    if(Message== 'w'){
-      cout<< ".--";}
-    if(Message== 'x'){
-      cout<< "-..-";}
-    if(Message== 'y'){
-      cout<< "-.--";}
-    if(Message== 'z'){
-      cout<< "--..";}
-     */
+    if(Message=='A'|| Message=='a')
+    {cout<< ".-";}
+    if(Message=='B'|| Message=='b')
+    {cout<< "-...";}
+    if(Message=='C'|| Message=='c')
+    {cout<< "-.-.";}
+    if(Message=='D'|| Message=='d')
+    {cout<< "-..";}
+    if(Message=='E'|| Message=='e')
+    {cout<< ".";}
+    if(Message=='F'|| Message=='f')
+    {cout<< "..-.";}
+    if(Message=='G'|| Message=='g')
+    {cout<< "--.";}
+    if(Message=='H'|| Message=='h')
+    {cout<< "....";}
+    if(Message=='I'|| Message=='i')
+    {cout<< "..";}
+    if(Message=='J'|| Message=='j')
+    {cout<< ".---";}
+    if(Message=='K'|| Message=='k')
+    {cout<< "-.-";}
+    if(Message=='L'|| Message=='l')
+    {cout<< ".-..";}
+    if(Message=='M'|| Message=='m')
+    {cout<< "--";}
+    if(Message=='N'|| Message=='n')
+    {cout<< "-.";}
+    if(Message=='O'|| Message=='o')
+    {cout<< "---";}
+    if(Message=='P'|| Message=='p')
+    {cout<< ".--.";}
+    if(Message=='Q'|| Message=='q')
+    {cout<< "--.-";}
+    if(Message=='R'|| Message=='r')
+    {cout<< ".-.";}
+    if(Message=='S'|| Message=='s')
+    {cout<< "...";}
+    if(Message=='T'|| Message=='t')
+    {cout<< "-";}
+    if(Message=='U'|| Message=='u')
+    {cout<< "..-";}
+    if(Message=='V'|| Message=='v')
+    {cout<< "...-";}
+    if(Message=='W'|| Message=='w')
+    {cout<< ".--";}
+    if(Message=='X'|| Message=='x')
+    {cout<< "-..-";}
+    if(Message=='Y'|| Message=='y')
+    {cout<< "-.--";}
+    if(Message=='Z'|| Message=='z')
+    {cout<< "--..";}
+    if(Message==' ')
+    {cout<<" ";}
 }
+
 void dictionary(string Cypher){
-    
     if(Cypher==".-"){
         cout<<"A";}
     if(Cypher=="-..."){
@@ -253,6 +195,12 @@ void dictionary(string Cypher){
         cout<<"Y";}
     if(Cypher=="--.."){
         cout<<"Z";}
-    if (Cypher==" "){
+    if(Cypher==" "){
         cout<<" ";}
+}
+int main(int argc, const char * argv[]){
+    pid_t pid;
+    menu();
+    fork();
+    return 0;
 }
